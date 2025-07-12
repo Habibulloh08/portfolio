@@ -6,7 +6,18 @@ import { ChevronDown } from "lucide-react"
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
   const [scrollY, setScrollY] = useState(0)
-
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const fullText = 'Habibulloh Karimov';
+  useEffect(() => {
+    if (currentIndex < fullText.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + fullText[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, fullText]);
   useEffect(() => {
     setMounted(true)
 
@@ -60,18 +71,16 @@ export function HeroSection() {
       >
         <div className="animate-slide-up">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-            <div className="gradient-text animate-gradient bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-typing overflow-hidden whitespace-nowrap border-r-3 border-current" style={{ animationDelay: "1s" }}>
-
-            </div>
-            <br />
-            <div
-              className="text-foreground animate-typing overflow-hidden whitespace-nowrap border-r-3 border-current"
-              style={{ animationDelay: "1s" }}
-            >
-              Habibulloh  Karimov
-            </div>
+            {displayText}
           </h1>
-
+          {/* <div className="space-y-4 animate-fade-in-up">
+            <h1 className="text-5xl md:text-7xl font-bold">
+              <span className="bg-gradient-hero bg-clip-text text-transparent">
+                {displayText}
+                <span className="animate-glow">|</span>
+              </span>
+            </h1>
+          </div> */}
           <p
             className="text-xl sm:text-2xl text-muted-foreground mb-8 animate-fade-in"
             style={{ animationDelay: "6s" }}
