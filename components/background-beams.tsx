@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "motion/react";
-import React, { useRef, useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 
 export const BackgroundBeams = ({
   children,
@@ -151,7 +151,7 @@ const CollisionMechanism = ({
       }
     };
 
-    const animationInterval = setInterval(checkCollision, 50);
+    const animationInterval = setInterval(checkCollision, 200);
 
     return () => clearInterval(animationInterval);
   }, [cycleCollisionDetected, containerRef, parentRef]);
@@ -196,7 +196,7 @@ const CollisionMechanism = ({
           repeatDelay: beamOptions.repeatDelay || 0,
         }}
         className={cn(
-          "absolute left-0 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent opacity-50 dark:opacity-70",
+          "absolute left-32 top-0 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent opacity-50 dark:opacity-70",
           beamOptions.className
         )}
       />
@@ -218,7 +218,7 @@ const CollisionMechanism = ({
 };
 
 const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
-  const spans = Array.from({ length: 20 }, (_, index) => ({
+  const spans = Array.from({ length: 12 }, (_, index) => ({
     id: index,
     initialX: 0,
     initialY: 0,
@@ -245,7 +245,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
             opacity: 0,
           }}
           transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-          className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500"
+          className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500 will-change-transform"
         />
       ))}
     </div>

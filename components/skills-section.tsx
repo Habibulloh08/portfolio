@@ -53,16 +53,6 @@ const softSkills = [
 
 export function SkillsSection() {
   const [visibleItems, setVisibleItems] = useState<number[]>([])
-  const [scrollY, setScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -88,29 +78,14 @@ export function SkillsSection() {
       id="skills"
       className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-secondary/20 relative overflow-hidden"
     >
-      {/* Parallax background elements */}
+      {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-20 right-20 w-32 h-32 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-2xl"
-          style={{
-            transform: `translateY(${scrollY * -0.1}px)`,
-          }}
-        />
-        <div
-          className="absolute bottom-20 left-20 w-48 h-48 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-2xl"
-          style={{
-            transform: `translateY(${scrollY * -0.15}px)`,
-          }}
-        />
+        <div className="absolute top-20 right-20 w-32 h-32 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-2xl" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div
-          className="text-center mb-16"
-          style={{
-            transform: `translateY(${scrollY * -0.05}px)`,
-          }}
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span className="gradient-text">Skills & Expertise</span>
           </h2>
@@ -129,13 +104,8 @@ export function SkillsSection() {
                 <div
                   key={category.category}
                   data-index={index}
-                  className={`skill-item bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-border card-hover transition-all duration-500 ${
-                    visibleItems.includes(index) ? "animate-slide-up opacity-100" : "opacity-0"
-                  }`}
-                  style={{
-                    animationDelay: `${index * 0.1}s`,
-                    transform: `translateY(${scrollY * -0.02}px)`,
-                  }}
+                  className={`skill-item bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-border card-hover transition-all duration-500 ${visibleItems.includes(index) ? "animate-slide-up opacity-100" : "opacity-0"
+                    }`}
                 >
                   <div className="flex items-center mb-4">
                     <Icon className="w-6 h-6 text-blue-500 mr-3" />
@@ -162,19 +132,14 @@ export function SkillsSection() {
         <div>
           <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Soft Skills</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {softSkills.map((skill, index) => {
+            {softSkills?.map((skill, index) => {
               const Icon = skill.icon
               return (
                 <div
                   key={skill.name}
                   data-index={index + technicalSkills.length}
-                  className={`skill-item bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl p-6 text-center border border-purple-500/30 card-hover transition-all duration-500 ${
-                    visibleItems.includes(index + technicalSkills.length) ? "animate-slide-up opacity-100" : "opacity-0"
-                  }`}
-                  style={{
-                    animationDelay: `${(index + technicalSkills.length) * 0.1}s`,
-                    transform: `translateY(${scrollY * -0.03}px)`,
-                  }}
+                  className={`skill-item bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl p-6 text-center border border-purple-500/30 card-hover transition-all duration-500 ${visibleItems.includes(index + technicalSkills.length) ? "animate-slide-up opacity-100" : "opacity-0"
+                    }`}
                 >
                   <Icon className="w-8 h-8 text-purple-500 dark:text-purple-400 mx-auto mb-3" />
                   <h4 className="text-foreground font-medium">{skill.name}</h4>

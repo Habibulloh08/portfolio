@@ -2,6 +2,7 @@
 
 import { Download, FileText } from "lucide-react"
 
+
 export function ResumeSection() {
   const handleDownload = async () => {
     try {
@@ -60,7 +61,7 @@ export function ResumeSection() {
               Download Resume (PDF)
             </button>
 
-            <p className="text-sm text-muted-foreground/70 mt-4">Last updated: July 2025</p>
+            <p className="text-sm text-muted-foreground/70 mt-4">Last updated: December 2025</p>
           </div>
         </div>
       </div>

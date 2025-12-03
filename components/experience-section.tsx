@@ -117,28 +117,6 @@ export function ExperienceSection() {
 
   const experience = experiences[currentSlide]
 
-  const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir: number) => ({
-      zIndex: 0,
-      x: dir < 0 ? 1000 : -1000,
-      opacity: 0,
-    }),
-  }
-
-  const transition = {
-    x: { stiffness: 300, damping: 30 },
-    opacity: { duration: 0.2 },
-  }
-
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-secondary/20 to-background">
       <div className="max-w-7xl mx-auto">
@@ -153,16 +131,15 @@ export function ExperienceSection() {
 
         <div className="max-w-5xl mx-auto">
           {/* Animated Carousel Container */}
-          <div className="relative min-h-[600px]">
+          <div className="relative min-h-[620px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentSlide}
                 custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={transition}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
                 className="absolute inset-0"
               >
                 {/* Slide Content */}
