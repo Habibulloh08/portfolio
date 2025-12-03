@@ -20,10 +20,70 @@ export function ProjectsSection() {
             <div className="p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Qadam AI - AI-Powered Fitness Trainer</h3>
+                  <p className="text-muted-foreground flex items-center">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    2024 – Present
+                  </p>
+                </div>
+                <a
+                  href="https://t.me/qadampodbot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  View Project
+                </a>
+              </div>
+
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Developed an AI-powered fitness platform with dynamic and responsive UI components. Integrated advanced AI and voice capabilities for hands-free workout guidance, real-time exercise feedback, and multilingual support.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="flex items-start">
+                  <TrendingUp className="w-5 h-5 text-purple-400 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-foreground font-medium mb-1">AI & Voice Integration</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Integrated Google Gemini AI and Porcupine voice recognition for real-time workout guidance and hands-free interaction.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <Users className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-foreground font-medium mb-1">Pose Detection & Motion Analysis</h4>
+                    <p className="text-muted-foreground text-sm">
+                      Implemented MediaPipe for pose detection and motion tracking to analyze exercise form and count repetitions accurately.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {["React", "TypeScript", "Tailwind CSS", "Material UI", "Google Gemini", "Porcupine", "MediaPipe", "Redux Toolkit", "React Query", "Socket.IO", "i18next"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-blue-500/20 text-blue-600 dark:text-blue-300 rounded-full text-sm border border-blue-500/30"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-border card-hover">
+            <div className="p-8">
+              <div className="flex items-start justify-between mb-6">
+                <div>
                   <h3 className="text-2xl font-bold text-foreground mb-2">ERP System</h3>
                   <p className="text-muted-foreground flex items-center">
                     <Calendar className="w-4 h-4 mr-2" />
-                    2023 – Present
+                    2023 – 2025
                   </p>
                 </div>
                 <a
