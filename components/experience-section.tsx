@@ -1,7 +1,7 @@
 "use client"
 
 import { Calendar, MapPin, Users, Code, TrendingUp, Shield, ChevronLeft, ChevronRight } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const experiences = [
