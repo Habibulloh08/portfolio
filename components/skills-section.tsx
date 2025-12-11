@@ -42,6 +42,11 @@ const technicalSkills = [
     skills: ["REST APIs", "Repository Pattern", "SOLID", "DRY", "Clean Architecture"],
     icon: Code,
   },
+  {
+    category: "Real-time & State Management",
+    skills: ["Socket.IO", "Redux Toolkit", "Zustand", "React Query"],
+    icon: Code,
+  },
 ]
 
 const softSkills = [
