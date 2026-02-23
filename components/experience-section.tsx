@@ -131,7 +131,7 @@ export function ExperienceSection() {
 
         <div className="max-w-5xl mx-auto">
           {/* Animated Carousel Container */}
-          <div className="relative min-h-[620px]">
+          <div className="relative min-h-[1350px] 2xl:min-h-[650px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentSlide}

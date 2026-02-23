@@ -10,6 +10,19 @@ import { BackgroundBeams } from "@/components/background-beams"
 
 const inter = Inter({ subsets: ["latin"] })
 
+const setInitialTheme = `
+(function() {
+  try {
+    var theme = localStorage.getItem('theme');
+    if (!theme) {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(theme);
+  } catch(e) {}
+})();
+`;
+
 export const metadata: Metadata = {
   title: "Habibulloh Karimov - Frontend Developer",
   description: "ReactJS Team Lead Developer specializing in modern web applications",
@@ -22,6 +35,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
+      </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         <ThemeProvider defaultTheme="dark">
           <BackgroundBeams />
