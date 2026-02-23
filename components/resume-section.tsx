@@ -7,7 +7,7 @@ export function ResumeSection() {
   const handleDownload = async () => {
     try {
       // Check if file exists by making a HEAD request
-      const response = await fetch("/resume/Karimov-Habibulloh.pdf", { method: "HEAD" })
+      const response = await fetch("/resume/Karimov-Habibulloh-Resume.pdf", { method: "HEAD" })
 
       if (!response.ok) {
         alert("Sorry, resume file is currently unavailable. Please try again later.")
@@ -16,7 +16,7 @@ export function ResumeSection() {
 
       // Create a temporary link to download the resume
       const link = document.createElement("a")
-      link.href = "/resume/Karimov-Habibulloh.pdf"
+      link.href = "/resume/Karimov-Habibulloh-Resume.pdf"
       link.download = "Karimov-Habibulloh-Resume.pdf"
       link.target = "_blank"
       link.rel = "noopener noreferrer"
@@ -61,7 +61,7 @@ export function ResumeSection() {
               Download Resume (PDF)
             </button>
 
-            <p className="text-sm text-muted-foreground/70 mt-4">Last updated: December 2025</p>
+            <p className="text-sm text-muted-foreground/70 mt-4">Last updated: February 2026 (PDF updated)</p>
           </div>
         </div>
       </div>
