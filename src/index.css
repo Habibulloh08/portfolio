@@ -1,0 +1,310 @@
+@import 'tailwindcss';
+
+/* ---------------------------------- */
+/* Mavzu tokenlari (dark — default)   */
+/* ---------------------------------- */
+:root {
+  --background: #010108;
+  --foreground: #f8f9fc;
+  --muted: #b8c0d8;
+  --accent: #fbbf24;
+  --accent-2: #60a5fa;
+  --accent-3: #fcd34d;
+  --glass: rgba(4, 4, 14, 0.88);
+  --glass-strong: rgba(4, 4, 14, 0.94);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --grid-line: rgba(59, 130, 246, 0.06);
+  --shadow-deep: rgba(0, 0, 0, 0.85);
+  --hero-size: clamp(3.6rem, 14vw, 11rem);
+  --section-size: clamp(2.2rem, 4.8vw, 4rem);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+}
+
+/* ---------------------------------- */
+/* Baza                               */
+/* ---------------------------------- */
+* {
+  border-color: var(--glass-border);
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor a,
+  body.custom-cursor button {
+    cursor: none;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 99px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------- */
+/* Komponent klasslari                */
+/* ---------------------------------- */
+@layer components {
+  /* Blur radiusi past — backdrop-filter Chrome'da har frameda qayta hisoblanadi */
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .glass-strong {
+    background: var(--glass-strong);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(100deg, var(--accent) 5%, var(--accent-2) 50%, var(--accent-3) 95%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 7s ease-in-out infinite;
+    filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.9));
+  }
+
+  /* Matn fon bilan aralashmasligi uchun */
+  .text-shadow {
+    text-shadow:
+      0 2px 20px rgba(0, 0, 0, 0.95),
+      0 0 3px rgba(0, 0, 0, 0.8);
+  }
+
+  .content-scrim::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 95% 75% at 50% 45%,
+      rgba(1, 1, 8, 0.45) 0%,
+      rgba(1, 1, 8, 0.78) 100%
+    );
+  }
+
+  .hero-title {
+    font-size: var(--hero-size);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    text-shadow:
+      0 4px 32px rgba(0, 0, 0, 0.95),
+      0 0 4px rgba(0, 0, 0, 0.85);
+  }
+
+  .section-title {
+    font-size: var(--section-size);
+    line-height: 1.05;
+    text-shadow:
+      0 3px 24px rgba(0, 0, 0, 0.95),
+      0 0 3px rgba(0, 0, 0, 0.8);
+  }
+
+  .hero-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  /* gradient-text ichidagi .char spanlar shaffof bo'lib qolmasligi uchun solid rang */
+  .hero-surname {
+    text-shadow:
+      0 4px 28px rgba(0, 0, 0, 0.95),
+      0 0 12px color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+
+  .hero-surname .char {
+    color: var(--accent);
+  }
+
+  .section-label {
+    color: var(--accent);
+    letter-spacing: 0.42em;
+  }
+
+  .serif-accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* Statik grid — background-position animatsiyasi Chrome'da doimiy repaint qilardi */
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 42%, black 25%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 42%, black 25%, transparent 78%);
+  }
+
+  /* Statik noise — kichik takrorlanuvchi tile, animatsiyasiz */
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+  }
+
+  .marquee-track {
+    animation: marquee var(--marquee-duration, 30s) linear infinite;
+  }
+
+  .marquee-reverse {
+    animation-direction: reverse;
+  }
+
+  .marquee-pause:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Aylanuvchi gradient chegara (Projects kartalari) */
+  .border-spin {
+    position: absolute;
+    inset: -120%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      var(--accent) 12%,
+      transparent 26%,
+      transparent 50%,
+      var(--accent-2) 62%,
+      transparent 76%
+    );
+    animation: spin-slow 7s linear infinite;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  .group:hover .border-spin {
+    opacity: 1;
+  }
+
+  .preview-shimmer {
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      color-mix(in srgb, var(--foreground) 14%, transparent) 50%,
+      transparent 65%
+    );
+    background-size: 250% 100%;
+  }
+
+  .group:hover .preview-shimmer {
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+}
+
+/* ---------------------------------- */
+/* Keyframes                          */
+/* ---------------------------------- */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 130% 0; }
+  100% { background-position: -130% 0; }
+}
+
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(13px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+/* Faqat opacity — blur'langan katta qatlamlarda scale har frameda qayta blur hisoblatardi */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* ---------------------------------- */
+/* Reduced motion                     */
+/* ---------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
