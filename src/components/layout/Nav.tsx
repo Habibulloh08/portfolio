@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Magnetic } from '@/components/fx/Magnetic'
-import { PROFILE } from '@/data/resume'
+import { SOCIALS } from '@/data/resume'
+
+const TELEGRAM = SOCIALS.find((s) => s.label === 'Telegram')!.href
 
 const LINKS = [
   { href: '#about', label: 'About' },
@@ -32,7 +34,9 @@ export function Nav() {
 
         <Magnetic strength={0.3}>
           <Button asChild size="sm">
-            <a href={`mailto:${PROFILE.email}`}>Hire me</a>
+            <a href={TELEGRAM} target="_blank" rel="noopener noreferrer">
+              Hire me
+            </a>
           </Button>
         </Magnetic>
       </div>
