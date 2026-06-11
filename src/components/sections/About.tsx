@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { GraduationCap, Award } from 'lucide-react'
 import { SectionHeading } from '@/components/fx/SectionHeading'
 import { PROFILE, STATS, EDUCATION } from '@/data/resume'
+import avatarImg from '@/assets/avatar/image.png'
 import { prefersReducedMotion } from '@/lib/utils'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -89,35 +90,39 @@ export function About() {
       <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         {/* Portret karta */}
         <div ref={portraitRef} className="relative mx-auto w-full max-w-sm will-change-transform">
-          <div className="glass relative aspect-[3/4] overflow-hidden rounded-[28px] p-8">
-            <div className="grid-bg absolute inset-0" aria-hidden />
-            <div
-              aria-hidden
-              className="absolute -right-16 -top-16 size-56 rounded-full bg-accent-2/25 blur-[70px]"
+          <div className="glass relative aspect-[3/4] overflow-hidden rounded-[28px]">
+            <img
+              src={avatarImg}
+              alt={`${PROFILE.name} ${PROFILE.surname} — portret`}
+              className="absolute inset-0 h-full w-full object-cover object-[center_120%]"
+              loading="eager"
+              decoding="async"
             />
             <div
               aria-hidden
-              className="absolute -bottom-16 -left-16 size-56 rounded-full bg-accent/20 blur-[70px]"
+              className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent"
             />
-            <div className="relative flex h-full flex-col justify-between">
-              <span className="gradient-text font-display text-7xl font-bold">HK</span>
+            <div
+              aria-hidden
+              className="absolute -right-16 -top-16 size-56 rounded-full bg-accent-2/20 blur-[50px]"
+            />
+            <div
+              aria-hidden
+              className="absolute -bottom-16 -left-16 size-56 rounded-full bg-accent/15 blur-[50px]"
+            />
+            <div className="relative flex h-full flex-col justify-between p-6 sm:p-8">
+              <span className="gradient-text font-display text-5xl font-bold opacity-90">HK</span>
               <div>
-                <p className="font-display text-2xl font-semibold">{PROFILE.role}</p>
+                <p className="font-display text-xl font-semibold sm:text-2xl">{PROFILE.role}</p>
                 <p className="mt-1 text-sm text-muted">{PROFILE.location}</p>
               </div>
             </div>
           </div>
           <div
             aria-hidden
-            className="glass absolute -right-5 top-8 rounded-2xl px-4 py-3 font-display text-sm [animation:float-y_5s_ease-in-out_infinite]"
+            className="glass absolute right-1 top-8 rounded-2xl px-4 py-3 font-display text-sm [animation:float-y_5s_ease-in-out_infinite]"
           >
             React · Vue · TS
-          </div>
-          <div
-            aria-hidden
-            className="glass absolute -left-5 bottom-12 rounded-2xl px-4 py-3 font-display text-sm [animation:float-y_6s_ease-in-out_infinite_reverse]"
-          >
-            Clean Architecture
           </div>
         </div>
 
