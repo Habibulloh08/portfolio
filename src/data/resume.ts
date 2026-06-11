@@ -4,6 +4,7 @@ import erpImg from "@/assets/projects/ERP.png";
 import usasImg from "@/assets/projects/Usas.png";
 import nextTripImg from "@/assets/projects/Next-Trip.png";
 import hgtImg from "@/assets/projects/Hgt-kiosk.png";
+import resumePdf from "@/resume/Karimov_Habibulloh_CV.pdf";
 
 export interface Job {
   company: string;
@@ -49,6 +50,8 @@ export const PROFILE = {
   phone: "+998 91-345-72-45",
   phoneHref: "tel:+998913457245",
   portfolio: "https://portfolio-phi-two-rikqt3zgv1.vercel.app/",
+  resume: resumePdf,
+  resumeFileName: "Karimov_Habibulloh_CV.pdf",
   summary:
     "Frontend developer with ~3 years of experience, specializing in high-performance web applications, complex ERP ecosystems and government platforms (USAS). Deep expertise in React, Next.js and TypeScript, with a proven record of applying Clean Architecture and designing complex RBAC systems across 8 major projects. I integrate cutting-edge AI and voice automation (Google Gemini, MediaPipe) and lead cross-functional Agile teams to ship secure, scalable, user-centered software.",
 };

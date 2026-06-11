@@ -94,7 +94,7 @@ export function About() {
             <img
               src={avatarImg}
               alt={`${PROFILE.name} ${PROFILE.surname} — portret`}
-              className="absolute inset-0 h-full w-full object-cover object-[center_120%]"
+              className="absolute inset-0 h-full w-full object-cover object-[center_100%]"
               loading="eager"
               decoding="async"
             />

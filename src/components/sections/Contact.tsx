@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, Phone, ArrowUpRight, Code2, Network, Send, Globe } from 'lucide-react'
+import { Mail, Phone, ArrowUpRight, Code2, Network, Send, FileText } from 'lucide-react'
 import { Magnetic } from '@/components/fx/Magnetic'
 import { PROFILE, SOCIALS } from '@/data/resume'
 import { prefersReducedMotion } from '@/lib/utils'
@@ -28,10 +28,10 @@ const CONTACT_LINKS = [
     icon: Phone,
   },
   {
-    label: 'Portfolio',
-    value: 'portfolio-phi-two-rikqt3zgv1.vercel.app',
-    href: PROFILE.portfolio,
-    icon: Globe,
+    label: 'Resume',
+    value: PROFILE.resumeFileName,
+    href: PROFILE.resume,
+    icon: FileText,
     external: true,
   },
 ]
